@@ -1,16 +1,22 @@
 let users = JSON.parse(localStorage.getItem("users") || "{}");
 let username = localStorage.getItem("username");
 
-// если нет ника → на старт
-if (!username || !users[username]) {
+console.log("USERNAME:", username);
+console.log("USERS:", users);
+
+// ❗ если нет данных — НЕ ломаемся, а отправляем
+if (!username) {
   window.location.href = "start.html";
 }
 
-let prices = {
-  AAPL: 150,
-  TSLA: 220,
-  GOOG: 2800
-};
+if (!users[username]) {
+  // если вдруг сломались данные — пересоздаём
+  users[username] = {
+    balance: 100000,
+    portfolio: {}
+  };
+  localStorage.setItem("users", JSON.stringify(users));
+}
 
 function getUser() {
   return users[username];
@@ -21,8 +27,17 @@ function save() {
 }
 
 function updateUI() {
-  document.getElementById("balance").innerText = getUser().balance;
+  const el = document.getElementById("balance");
+  if (el) {
+    el.innerText = getUser().balance;
+  }
 }
+
+let prices = {
+  AAPL: 150,
+  TSLA: 220,
+  GOOG: 2800
+};
 
 function buy(stock) {
   let user = getUser();
