@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Start</title>
+</head>
+<body>
+
+<h2>Введи ник</h2>
+
+<input id="nick" placeholder="Ник">
+<button onclick="start()">Играть</button>
+
+<script>
+function start() {
+  let nick = document.getElementById("nick").value.trim();
+
+  if (!nick) {
+    alert("Введи ник");
+    return;
+  }
+
+  let users = JSON.parse(localStorage.getItem("users") || "{}");
+
+  // создаём игрока если новый
+  if (!users[nick]) {
+    users[nick] = {
+      balance: 100000,
+      portfolio: {}
+    };
+  }
+
+  localStorage.setItem("users", JSON.stringify(users));
+  localStorage.setItem("username", nick);
+
+  window.location.href = "index.html";
+}
+</script>
+
+</body>
+</html>
