@@ -1,0 +1,15 @@
+<h1>📦 Портфель</h1>
+
+<div id="list"></div>
+
+<script>
+let users = JSON.parse(localStorage.getItem("users")) || {};
+let currentUser = localStorage.getItem("currentUser");
+
+let user = users[currentUser];
+
+document.getElementById("list").innerHTML =
+  Object.entries(user.portfolio || {})
+    .map(([k,v]) => `<p>${k}: ${v} шт.</p>`)
+    .join("");
+</script>

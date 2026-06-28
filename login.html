@@ -1,0 +1,25 @@
+<h2>Вход</h2>
+
+<input id="user" placeholder="логин">
+<input id="pass" type="password" placeholder="пароль">
+
+<button onclick="login()">Войти</button>
+
+<script>
+function login() {
+  let username = document.getElementById("user").value;
+  let pass = document.getElementById("pass").value;
+
+  let users = JSON.parse(localStorage.getItem("users")) || {};
+
+  if (!users[username]) return alert("Нет такого пользователя");
+
+  if (users[username].password !== pass) {
+    return alert("Неверный пароль");
+  }
+
+  localStorage.setItem("currentUser", username);
+
+  window.location.href = "index.html";
+}
+</script>
