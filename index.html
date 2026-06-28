@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Blackstone Exchange</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Inter,Arial,sans-serif;
+}
+
+body{
+
+background:
+linear-gradient(180deg,#0a0d14,#111827,#0b0f18);
+
+color:white;
+
+min-height:100vh;
+
+}
+
+.app{
+
+max-width:1000px;
+
+margin:auto;
+
+padding:25px;
+
+}
+
+.header{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:30px;
+
+}
+
+.logo{
+
+font-size:38px;
+
+font-weight:900;
+
+letter-spacing:2px;
+
+}
+
+.subtitle{
+
+color:#98a2b3;
+
+margin-top:6px;
+
+font-size:15px;
+
+}
+
+.market{
+
+background:rgba(255,255,255,.05);
+
+backdrop-filter:blur(18px);
+
+border:1px solid rgba(255,255,255,.08);
+
+border-radius:28px;
+
+padding:22px;
+
+margin-bottom:25px;
+
+box-shadow:0 10px 30px rgba(0,0,0,.35);
+
+}
+
+.marketTitle{
+
+font-size:24px;
+
+margin-bottom:18px;
+
+}
+
+.trend{
+
+display:flex;
+
+justify-content:space-between;
+
+padding:14px 0;
+
+border-bottom:1px solid rgba(255,255,255,.06);
+
+}
+
+.trend:last-child{
+
+border:none;
+
+}
+
+.green{
+
+color:#2ed573;
+
+font-weight:bold;
+
+}
+
+.red{
+
+color:#ff5c5c;
+
+font-weight:bold;
+
+}
+
+.list{
+
+display:flex;
+
+flex-direction:column;
+
+gap:18px;
+
+}
+
+.stock{
+
+background:#171d29;
+
+border-radius:24px;
+
+padding:22px;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+border:1px solid rgba(255,255,255,.05);
+
+transition:.25s;
+
+}
+
+.stock:hover{
+
+transform:translateY(-4px);
+
+background:#202838;
+
+}
+
+.left{
+
+display:flex;
+
+align-items:center;
+
+gap:18px;
+
+}
+
+.icon{
+
+width:62px;
+
+height:62px;
+
+border-radius:18px;
+
+background:#252f45;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-size:30px;
+
+}
+
+.company{
+
+font-size:22px;
+
+font-weight:bold;
+
+margin-bottom:5px;
+
+}
+
+.type{
+
+color:#9ca3af;
+
+font-size:14px;
+
+}
+
+.price{
+
+text-align:right;
+
+}
+
+.value{
+
+font-size:28px;
+
+font-weight:bold;
+
+margin-bottom:5px;
+
+}
+
+.change{
+
+font-size:15px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="app">
+
+<div class="header">
+
+<div>
+
+<div class="logo">BLACKSTONE</div>
+
+<div class="subtitle">Global Stock Exchange</div>
+
+</div>
+
+</div>
+
+<div class="market">
+
+<div class="marketTitle">
+
+🔥 Trending Today
+
+</div>
+<div class="trend">
+<div>🚗 Velocity Motors</div>
+<div class="green">▲ +4.82%</div>
+</div>
+
+<div class="trend">
+<div>💻 NovaTech</div>
+<div class="red">▼ -1.34%</div>
+</div>
+
+<div class="trend">
+<div>🛢 PetroMax Energy</div>
+<div class="green">▲ +6.18%</div>
+</div>
+
+<div class="trend">
+<div>✈ AeroSky</div>
+<div class="green">▲ +2.41%</div>
+</div>
+
+</div>
+
+<div class="list">
+
+<div class="stock">
+
+<div class="left">
+
+<div class="icon">🚗</div>
+
+<div>
+
+<div class="company">Velocity Motors</div>
+
+<div class="type">Automotive</div>
+
+</div>
+
+</div>
+
+<div class="price">
+
+<div class="value">$248.19</div>
+
+<div class="change green">▲ +4.82%</div>
+
+</div>
+
+</div>
+
+<div class="stock">
+
+<div class="left">
+
+<div class="icon">💻</div>
+
+<div>
+
+<div class="company">NovaTech</div>
+
+<div class="type">Technology</div>
+
+</div>
+
+</div>
+
+<div class="price">
+
+<div class="value">$97.44</div>
+
+<div class="change red">▼ -1.34%</div>
+
+</div>
+
+</div>
+<div class="stock">
+
+<div class="left">
+
+<div class="icon">🛢</div>
+
+<div>
+
+<div class="company">PetroMax Energy</div>
+
+<div class="type">Oil & Energy</div>
+
+</div>
+
+</div>
+
+<div class="price">
+
+<div class="value">$183.91</div>
+
+<div class="change green">▲ +6.18%</div>
+
+</div>
+
+</div>
+
+<div class="stock">
+
+<div class="left">
+
+<div class="icon">✈️</div>
+
+<div>
+
+<div class="company">AeroSky</div>
+
+<div class="type">Aviation</div>
+
+</div>
+
+</div>
+
+<div class="price">
+
+<div class="value">$154.62</div>
+
+<div class="change green">▲ +2.74%</div>
+
+</div>
+
+</div>
+
+<div class="stock">
+
+<div class="left">
+
+<div class="icon">⚡</div>
+
+<div>
+
+<div class="company">Volt Energy</div>
+
+<div class="type">Electric Power</div>
+
+</div>
+
+</div>
+
+<div class="price">
+
+<div class="value">$212.47</div>
+
+<div class="change green">▲ +5.63%</div>
+
+</div>
+
+</div>
+
+<div class="stock">
+
+<div class="left">
+
+<div class="icon">🏦</div>
+
+<div>
+
+<div class="company">Union Bank</div>
+
+<div class="type">Finance</div>
+
+</div>
+
+</div>
+
+<div class="price">
+
+<div class="value">$88.43</div>
+
+<div class="change red">▼ -0.71%</div>
+
+</div>
+
+</div>
+
+<div class="stock">
+
+<div class="left">
+
+<div class="icon">🎮</div>
+
+<div>
+
+<div class="company">Pixel Games</div>
+
+<div class="type">Gaming</div>
+
+</div>
+
+</div>
+
+<div class="price">
+
+<div class="value">$139.27</div>
+
+<div class="change green">▲ +7.92%</div>
+
+</div>
+
+</div>
+
+<div class="stock">
+
+<div class="left">
+
+<div class="icon">☕</div>
+
+<div>
+
+<div class="company">Coffee Kings</div>
+
+<div class="type">Food & Drinks</div>
+
+</div>
+
+</div>
+
+<div class="price">
+
+<div class="value">$46.58</div>
+
+<div class="change green">▲ +1.16%</div>
+
+</div>
+
+</div>
+</div>
+
+<div style="height:25px;"></div>
+
+<div class="market">
+
+<div class="marketTitle">
+📊 Market Status
+</div>
+
+<div class="trend">
+<div>🟢 Market</div>
+<div class="green">OPEN</div>
+</div>
+
+<div class="trend">
+<div>📈 Companies</div>
+<div>24 Listed</div>
+</div>
+
+<div class="trend">
+<div>💹 Daily Volume</div>
+<div>$18.4B</div>
+</div>
+
+<div class="trend">
+<div>🌎 Region</div>
+<div>Global</div>
+</div>
+
+</div>
+
+<footer style="text-align:center;padding:30px;color:#8d98ab;font-size:14px;">
+
+BLACKSTONE EXCHANGE © 2026<br>
+Global Financial Markets
+
+</footer>
+
+</div>
+
+</body>
+
+</html>
