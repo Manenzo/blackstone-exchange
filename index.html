@@ -1,163 +1,44 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ActioMansot</title>
-
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Stock Game</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
 <header>
-
-<div class="logo">
-ActioMansot
-</div>
-
-<nav>
-
-<a href="index.html">Рынок</a>
-
-<a href="portfolio.html">Портфель</a>
-
-<a href="login.html">Вход</a>
-
-</nav>
-
+  <h1>📈 Биржа</h1>
+  <div>
+    💰 Баланс: <span id="balance">0</span>$
+  </div>
 </header>
 
-<div class="container">
+<main>
 
-<h1>📈 Рынок акций</h1>
+  <div class="stock">
+    <h3>AAPL</h3>
+    <p>150$</p>
+    <button onclick="buy('AAPL')">Купить</button>
+    <button onclick="sell('AAPL')">Продать</button>
+  </div>
 
-<div class="market" id="market">
+  <div class="stock">
+    <h3>TSLA</h3>
+    <p>220$</p>
+    <button onclick="buy('TSLA')">Купить</button>
+    <button onclick="sell('TSLA')">Продать</button>
+  </div>
 
-<div class="stock">
+  <div class="stock">
+    <h3>GOOG</h3>
+    <p>2800$</p>
+    <button onclick="buy('GOOG')">Купить</button>
+    <button onclick="sell('GOOG')">Продать</button>
+  </div>
 
-<h2>Apple</h2>
-
-<div class="price up" id="apple">
-$215.42
-</div>
-
-<button onclick="buy('Apple',applePrice)">
-Купить
-</button>
-
-</div>
-
-<div class="stock">
-
-<h2>Microsoft</h2>
-
-<div class="price up" id="microsoft">
-$491.60
-</div>
-
-<button onclick="buy('Microsoft',microsoftPrice)">
-Купить
-</button>
-
-</div>
-
-<div class="stock">
-
-<h2>NVIDIA</h2>
-
-<div class="price up" id="nvidia">
-$171.22
-</div>
-
-<button onclick="buy('NVIDIA',nvidiaPrice)">
-Купить
-</button>
-
-</div>
-
-<div class="stock">
-
-<h2>Tesla</h2>
-
-<div class="price down" id="tesla">
-$308.54
-</div>
-
-<button onclick="buy('Tesla',teslaPrice)">
-Купить
-</button>
-
-</div>
-
-<div class="stock">
-
-<h2>Amazon</h2>
-
-<div class="price up" id="amazon">
-$226.74
-</div>
-
-<button onclick="buy('Amazon',amazonPrice)">
-Купить
-</button>
-
-</div>
-
-<div class="stock">
-
-<h2>Meta</h2>
-
-<div class="price up" id="meta">
-$735.81
-</div>
-
-<button onclick="buy('Meta',metaPrice)">
-Купить
-</button>
-
-</div>
-
-<div class="stock">
-
-<h2>Google</h2>
-
-<div class="price up" id="google">
-$176.13
-</div>
-
-<button onclick="buy('Google',googlePrice)">
-Купить
-</button>
-
-</div>
-
-<div class="stock">
-
-<h2>Netflix</h2>
-
-<div class="price down" id="netflix">
-$1294.10
-</div>
-
-<button onclick="buy('Netflix',netflixPrice)">
-Купить
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-<footer>
-
-© ActioMansot
-
-</footer>
+</main>
 
 <script src="script.js"></script>
-
 </body>
-
 </html>
