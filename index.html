@@ -1,199 +1,126 @@
- <!DOCTYPE html>
- <html lang="ru">
- <head>
--<meta charset="UTF-8">
--<meta name="viewport" content="width=device-width, initial-scale=1.0">
--<title>ActioMansot</title>
--<link rel="stylesheet" href="style.css">
-+  <meta charset="UTF-8">
-+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-+  <meta name="theme-color" content="#070b16">
-+  <title>ActioMansot — рынок акций</title>
-+  <link rel="preconnect" href="https://fonts.googleapis.com">
-+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-+  <link rel="stylesheet" href="style.css">
- </head>
--
--<body>
--
--<header>
--
--<div class="logo">
--📈 ActioMansot
--</div>
--
--<nav>
--<a href="index.html" class="active">Рынок</a>
--<a href="portfolio.html">Портфель</a>
--</nav>
--
--<div class="user">
--
--<div id="nickname"></div>
--
--<div>
--💰 $<span id="balance">100000</span>
--</div>
--
--</div>
--
--</header>
--
--<div class="container">
--
--<h1>Рынок акций</h1>
--
--<div class="market">
--
--<div class="stock">
--<h2>Apple</h2>
--<div class="price" id="AAPL-price">$215.42</div>
--<button onclick="buy('AAPL')">Купить</button>
--</div>
--
--<div class="stock">
--<h2>Microsoft</h2>
--<div class="price" id="MSFT-price">$491.60</div>
--<button onclick="buy('MSFT')">Купить</button>
--</div>
--
--<div class="stock">
--<h2>NVIDIA</h2>
--<div class="price" id="NVDA-price">$171.22</div>
--<button onclick="buy('NVDA')">Купить</button>
--</div>
--
--<div class="stock">
--<h2>Tesla</h2>
--<div class="price" id="TSLA-price">$308.54</div>
--<button onclick="buy('TSLA')">Купить</button>
--</div>
--
--<div class="stock">
--<h2>Amazon</h2>
--<div class="price" id="AMZN-price">$226.74</div>
--<button onclick="buy('AMZN')">Купить</button>
--</div>
--
--<div class="stock">
--<h2>Meta</h2>
--<div class="price" id="META-price">$735.81</div>
--<button onclick="buy('META')">Купить</button>
--</div>
--
--<div class="stock">
--<h2>Google</h2>
--<div class="price" id="GOOG-price">$176.13</div>
--<button onclick="buy('GOOG')">Купить</button>
--</div>
--
--<div class="stock">
--<h2>Netflix</h2>
--<div class="price" id="NFLX-price">$1294.10</div>
--<button onclick="buy('NFLX')">Купить</button>
--</div>
--
--</div>
--
--</div>
--
--<footer>
--© ActioMansot
--</footer>
--
--<script src="script.js"></script>
--
-+<body data-page="market">
-+  <div class="app-shell">
-+    <header class="topbar">
-+      <a class="brand" href="index.html" aria-label="ActioMansot — главная">
-+        <span class="brand__icon">▲</span>
-+        <span>
-+          <strong>ActioMansot</strong>
-+          <small>Stock Simulator</small>
-+        </span>
-+      </a>
-+
-+      <nav class="main-nav" aria-label="Основная навигация">
-+        <a class="main-nav__link active" href="index.html">Рынок</a>
-+        <a class="main-nav__link" href="portfolio.html">Портфель</a>
-+      </nav>
-+
-+      <section class="account-panel" aria-label="Аккаунт игрока">
-+        <div class="account-panel__user">
-+          <span class="muted">Игрок</span>
-+          <strong id="nickname">—</strong>
-+        </div>
-+        <div class="account-panel__balance">
-+          <span class="muted">Баланс</span>
-+          <strong id="balance">$100,000.00</strong>
-+        </div>
-+        <button class="ghost-button" id="changeNicknameButton" type="button">Сменить ник</button>
-+      </section>
-+    </header>
-+
-+    <main class="page-content">
-+      <section class="hero-card reveal">
-+        <div>
-+          <p class="eyebrow">Биржевой симулятор без сервера</p>
-+          <h1>Торгуйте акциями, следите за новостями и развивайте портфель.</h1>
-+          <p class="hero-card__text">Цены обновляются каждые 3 секунды, новости рынка меняют настроение инвесторов, а весь прогресс сохраняется в localStorage.</p>
-+        </div>
-+        <div class="hero-stats" aria-label="Сводка рынка">
-+          <article>
-+            <span>Капитал</span>
-+            <strong id="netWorthHero">$100,000.00</strong>
-+          </article>
-+          <article>
-+            <span>Стоимость портфеля</span>
-+            <strong id="portfolioValueHero">$0.00</strong>
-+          </article>
-+          <article>
-+            <span>Позиций</span>
-+            <strong id="positionsHero">0</strong>
-+          </article>
-+        </div>
-+      </section>
-+
-+      <section class="dashboard-grid">
-+        <aside class="news-panel reveal" aria-labelledby="newsTitle">
-+          <div class="section-heading section-heading--compact">
-+            <div>
-+              <p class="eyebrow">Market Pulse</p>
-+              <h2 id="newsTitle">Новости рынка</h2>
-+            </div>
-+            <span class="live-dot">Live</span>
-+          </div>
-+          <div id="marketNews" class="news-list"></div>
-+        </aside>
-+
-+        <section class="market-section reveal" aria-labelledby="marketTitle">
-+          <div class="section-heading">
-+            <div>
-+              <p class="eyebrow">40+ реальных компаний</p>
-+              <h2 id="marketTitle">Рынок акций</h2>
-+            </div>
-+            <label class="search-box" for="stockSearch">
-+              <span>⌕</span>
-+              <input id="stockSearch" type="search" placeholder="Поиск: Apple, NVDA, Coca-Cola..." autocomplete="off">
-+            </label>
-+          </div>
-+
-+          <div id="stockGrid" class="stock-grid" aria-live="polite"></div>
-+          <p id="emptySearch" class="empty-state hidden">Ничего не найдено. Попробуйте другой тикер или название компании.</p>
-+        </section>
-+      </section>
-+    </main>
-+
-+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
-+  </div>
-+
-+  <script src="script.js"></script>
- </body>
--</html>
-\ No newline at end of file
-+</html>
- 
-EOF
-)
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#070b16">
+  <title>ActioMansot — рынок акций</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body data-page="market">
+  <div class="app-shell">
+    <header class="topbar">
+
+      <a class="brand" href="index.html" aria-label="ActioMansot — главная">
+        <span class="brand__icon">▲</span>
+        <span>
+          <strong>ActioMansot</strong>
+          <small>Stock Simulator</small>
+        </span>
+      </a>
+
+      <nav class="main-nav" aria-label="Основная навигация">
+        <a class="main-nav__link active" href="index.html">Рынок</a>
+        <a class="main-nav__link" href="portfolio.html">Портфель</a>
+      </nav>
+
+      <section class="account-panel" aria-label="Аккаунт игрока">
+        <div class="account-panel__user">
+          <span class="muted">Игрок</span>
+          <strong id="nickname">—</strong>
+        </div>
+
+        <div class="account-panel__balance">
+          <span class="muted">Баланс</span>
+          <strong id="balance">$100,000.00</strong>
+        </div>
+
+        <button class="ghost-button" id="changeNicknameButton" type="button">
+          Сменить ник
+        </button>
+      </section>
+
+    </header>
+
+    <main class="page-content">
+
+      <section class="hero-card reveal">
+        <div>
+          <p class="eyebrow">Биржевой симулятор без сервера</p>
+          <h1>Торгуйте акциями, следите за новостями и развивайте портфель.</h1>
+          <p class="hero-card__text">
+            Цены обновляются каждые 3 секунды, новости рынка меняют настроение инвесторов,
+            а весь прогресс сохраняется в localStorage.
+          </p>
+        </div>
+
+        <div class="hero-stats">
+          <article>
+            <span>Капитал</span>
+            <strong id="netWorthHero">$100,000.00</strong>
+          </article>
+
+          <article>
+            <span>Стоимость портфеля</span>
+            <strong id="portfolioValueHero">$0.00</strong>
+          </article>
+
+          <article>
+            <span>Позиций</span>
+            <strong id="positionsHero">0</strong>
+          </article>
+        </div>
+      </section>
+
+      <section class="dashboard-grid">
+
+        <aside class="news-panel reveal">
+          <div class="section-heading section-heading--compact">
+            <div>
+              <p class="eyebrow">Market Pulse</p>
+              <h2>Новости рынка</h2>
+            </div>
+            <span class="live-dot">Live</span>
+          </div>
+
+          <div id="marketNews" class="news-list"></div>
+        </aside>
+
+        <section class="market-section reveal">
+
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">40+ реальных компаний</p>
+              <h2>Рынок акций</h2>
+            </div>
+
+            <label class="search-box">
+              <span>⌕</span>
+              <input id="stockSearch" type="search" placeholder="Поиск: Apple, NVDA, Coca-Cola..." autocomplete="off">
+            </label>
+          </div>
+
+          <div id="stockGrid" class="stock-grid"></div>
+
+          <p id="emptySearch" class="empty-state hidden">
+            Ничего не найдено. Попробуйте другой тикер или название компании.
+          </p>
+
+        </section>
+
+      </section>
+
+    </main>
+
+    <div id="toast" class="toast"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
