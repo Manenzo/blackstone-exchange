@@ -273,3 +273,42 @@ a {
 .hidden {
   display: none !important;
 }
+@media (max-width: 768px) {
+
+  .hero-card {
+    grid-template-columns: 1fr !important;
+    gap: 18px;
+  }
+
+  h1 {
+    font-size: 28px !important;
+    line-height: 1.2;
+  }
+
+  .hero-card__text {
+    font-size: 15px;
+  }
+
+  .topbar {
+    grid-template-columns: 1fr !important;
+    gap: 10px;
+  }
+
+  .account-panel {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .page-content {
+    padding: 0 12px;
+  }
+
+  .summary-grid,
+  .hero-stats {
+    grid-template-columns: 1fr !important;
+  }
+
+  .stock-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
