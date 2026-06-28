@@ -1,15 +1,139 @@
-<h1>📦 Портфель</h1>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Портфель</title>
 
-<div id="list"></div>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+📈 ActioMansot
+</div>
+
+<nav>
+<a href="index.html">Рынок</a>
+<a href="portfolio.html" class="active">Портфель</a>
+</nav>
+
+<div class="user">
+
+<div id="nickname"></div>
+
+<div>
+💰 $<span id="balance"></span>
+</div>
+
+</div>
+
+</header>
+
+<div class="container">
+
+<h1>Мой портфель</h1>
+
+<div id="portfolio"></div>
+
+</div>
 
 <script>
-let users = JSON.parse(localStorage.getItem("users")) || {};
-let currentUser = localStorage.getItem("currentUser");
 
-let user = users[currentUser];
+let username = localStorage.getItem("username");
 
-document.getElementById("list").innerHTML =
-  Object.entries(user.portfolio || {})
-    .map(([k,v]) => `<p>${k}: ${v} шт.</p>`)
-    .join("");
+let users = JSON.parse(localStorage.getItem("users") || "{}");
+
+let user = users[username];
+
+document.getElementById("nickname").textContent = username;
+document.getElementById("balance").textContent = user.balance.toFixed(2);
+
+const prices = {
+AAPL:215.42,
+MSFT:491.60,
+NVDA:171.22,
+TSLA:308.54,
+AMZN:226.74,
+META:735.81,
+GOOG:176.13,
+NFLX:1294.10
+};
+
+let html="";
+
+let total=0;
+
+for(let stock in user.portfolio){
+
+let count=user.portfolio[stock];
+
+if(count<=0) continue;
+
+let value=count*prices[stock];
+
+total+=value;
+
+html+=`
+<div class="stock">
+
+<h2>${stock}</h2>
+
+<p>Количество: ${count}</p>
+
+<p>Стоимость: $${value.toFixed(2)}</p>
+
+<button onclick="sell('${stock}')">
+Продать
+</button>
+
+</div>
+`;
+
+}
+
+if(html===""){
+
+html=`
+<div class="stock">
+
+<h2>Портфель пуст</h2>
+
+<p>Купите акции на главной странице.</p>
+
+</div>
+`;
+
+}
+
+html+=`
+<h2 style="margin-top:40px;">
+Стоимость портфеля: $${total.toFixed(2)}
+</h2>
+`;
+
+document.getElementById("portfolio").innerHTML=html;
+
+function sell(stock){
+
+if(user.portfolio[stock]>0){
+
+user.portfolio[stock]--;
+
+user.balance+=prices[stock];
+
+localStorage.setItem("users",JSON.stringify(users));
+
+location.reload();
+
+}
+
+}
+
 </script>
+
+</body>
+</html>
